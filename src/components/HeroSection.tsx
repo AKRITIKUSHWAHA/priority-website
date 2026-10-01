@@ -347,7 +347,7 @@ export function HeroSection({ onTrackSearch }: HeroSectionProps) {
 
       {/* 6. Scroll-Down Indicator */}
       <motion.div
-        style={{ opacity: opacityFade as any }}
+        style={{ opacity: opacityFade } as unknown as React.CSSProperties}
         animate={{ y: [0, 8, 0] }}
         transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
         className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1 text-slate-400 text-xs font-semibold select-none cursor-pointer"
