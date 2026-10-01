@@ -143,7 +143,7 @@ export default function TrackingPage() {
             {/* Quick Sample Waybills Pills */}
             <div className="pt-2 flex flex-wrap items-center gap-2 text-xs">
               <span className="text-slate-400 font-medium mr-1">Sample Active IDs:</span>
-              {["PH-8942-ZW", "PH-7721-SA", "PH-5120-MZ"].map((sampleId) => (
+              {["AGL1598", "3009296479", "PH-8942-ZW", "PH-7721-SA"].map((sampleId) => (
                 <button
                   key={sampleId}
                   type="button"
@@ -243,14 +243,27 @@ export default function TrackingPage() {
                   </div>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-navy-950 border border-navy-800 flex items-center justify-between text-xs text-slate-300">
+                <div className="p-3.5 rounded-xl bg-navy-950 border border-navy-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-slate-300">
                   <div className="flex items-center gap-2">
                     <MapPin className="w-4 h-4 text-accent-500 shrink-0" />
                     <span><strong>Current Location:</strong> {shipment.currentLocation}</span>
                   </div>
-                  <span className="text-[10px] text-slate-500 font-medium hidden sm:inline">
-                    {shipment.lastUpdated}
-                  </span>
+                  <div className="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
+                    <span className="text-[10px] text-slate-500 font-medium">
+                      {shipment.lastUpdated}
+                    </span>
+                    {shipment.googleMapsUrl && (
+                      <a
+                        href={shipment.googleMapsUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 bg-[#FF4800] hover:bg-[#E03E00] text-white px-3 py-1.5 rounded-lg text-xs font-bold transition-all shadow-md shadow-[#FF4800]/25"
+                      >
+                        <MapPin className="w-3.5 h-3.5" />
+                        <span>Live Google Maps ↗</span>
+                      </a>
+                    )}
+                  </div>
                 </div>
               </Card>
 
